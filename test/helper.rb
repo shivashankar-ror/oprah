@@ -1,6 +1,11 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require 'oprah'
+require 'oprah/test_helpers'
+
+class Minitest::Test
+  include Oprah::TestHelpers
+end
 
 module Fixtures
   module Entity

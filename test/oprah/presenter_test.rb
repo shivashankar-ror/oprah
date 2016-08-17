@@ -93,15 +93,5 @@ module Oprah
       refute_equal user_presenter, project
       refute_equal user_presenter, project_presenter
     end
-
-    private
-
-    def present_many(*args, &block)
-      Oprah.present_many(*args, &block)
-    end
-
-    def present(*args, &block)
-      Oprah.present(*args, &block)
-    end
   end
 end
