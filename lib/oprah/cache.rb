@@ -15,9 +15,8 @@ module Oprah
       @mutex.synchronize do
         key = class_name_for(object)
 
-        if found  = @mapping[key]
-          return found
-        end
+        cached = @mapping[key]
+        return cached if cached
 
         @mapping[key] = presenter_classes_for(object)
       end
