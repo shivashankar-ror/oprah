@@ -49,6 +49,11 @@ module Oprah
       assert_kind_of ActionView::Context, presenter.view_context
     end
 
+    def test_default_view_context_unique_per_presenter
+      refute_equal present(User.new).view_context,
+                   present(User.new).view_context
+    end
+
     def test_method_missing_delegation
       assert_equal "Foo Bar", present(User.new).name
       assert_equal "Foo", present(User.new).first_name
