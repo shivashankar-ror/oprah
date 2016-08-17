@@ -42,7 +42,7 @@ module Oprah
       class_for(object).ancestors.map do |klass|
         begin
           (klass.name + "Presenter").constantize
-        rescue
+        rescue NameError
         end
       end.compact.reverse
     end
