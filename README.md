@@ -107,7 +107,7 @@ what's going on, even if that means to be (at least a little bit) explicit.
 Here's how you can use Oprah presenters from your controller:
 
 ``` ruby
-class UserController < ApplicationController
+class UsersController < ApplicationController
   def show
     @user = present User.find(params[:id])
   end
