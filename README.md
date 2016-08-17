@@ -1,5 +1,9 @@
 # Oprah
 
+[![Gem Version](https://badge.fury.io/rb/oprah.svg)](https://badge.fury.io/rb/oprah)
+[![Build Status](https://travis-ci.org/endofunky/oprah.svg)](https://travis-ci.org/endofunky/oprah)
+[![Code Climate](https://codeclimate.com/github/endofunky/oprah.svg)](https://codeclimate.com/github/endofunky/oprah)
+
 Opinionated presenters for Rails 5 - without the cruft.
 
 ## Table of Contents
