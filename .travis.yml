@@ -13,3 +13,6 @@ before_update:
   - bundle update
 notifications:
   email: false
+addons:
+  code_climate:
+    repo_token: 3d9c9c681c7be79695156ecbf9978ada542e60b726a7ba728866dee6f95f3ccd
