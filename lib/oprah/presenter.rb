@@ -1,5 +1,7 @@
 module Oprah
   class Presenter
+    extend Forwardable
+
     # @return [Object] The presented object
     attr_reader :object
 
@@ -10,6 +12,14 @@ module Oprah
 
     # @!visibility private
     @@cache = Oprah::Cache.new
+
+    # @!method inspect
+    #   @see Object#inspect
+    #   @return [String]
+    # @!method to_s
+    #   @see Object#to_s
+    #   @return [String]
+    def_delegators :@object, :inspect, :to_s
 
     class << self
       # Returns the shared presenter cache object.

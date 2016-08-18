@@ -1,4 +1,5 @@
 # stdlib
+require 'forwardable'
 require 'singleton'
 
 # gems

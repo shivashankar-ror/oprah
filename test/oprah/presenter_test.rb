@@ -98,5 +98,19 @@ module Oprah
       refute_equal user_presenter, project
       refute_equal user_presenter, project_presenter
     end
+
+    def test_inspect
+      user = User.new
+      presenter = present(user)
+
+      assert_equal user.inspect, presenter.inspect
+    end
+
+    def test_to_s
+      user = User.new
+      presenter = present(user)
+
+      assert_equal user.to_s, presenter.to_s
+    end
   end
 end
