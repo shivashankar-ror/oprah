@@ -239,17 +239,18 @@ Oprah.present(User.new).baz
 # => "foobar"
 ```
 
-### Chosing presenters
+### Choosing presenters
 
-When presenting you can optionally choose which presenters to use:
+When presenting an object you can optionally choose which presenter classes
+to use:
 
 ``` ruby
 Oprah.present(User.new, only: DescribablePresenter)
 ```
 
 This parameter takes either a single presenter or an `Array` of presenters.
-The presenter(s) given need to match the object's class or ancestors.
-Non-matching presenters given will be ignored.
+The presenter(s) given need to match the object's class or one of it's
+ancestors. Non-matching presenters given will be ignored.
 
 ## License
 
