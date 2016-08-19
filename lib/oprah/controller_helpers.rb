@@ -15,9 +15,9 @@ module Oprah
     # presenter by default. This can be overridden.
     #
     # @see Presenter.present
-    def present(*args, **kwargs)
+    def present(*args, **kwargs, &block)
       kwargs = { view_context: oprah_view_context }.merge(kwargs)
-      Oprah.present(*args, **kwargs)
+      Oprah.present(*args, **kwargs, &block)
     end
 
     # Presents a collection of objects.
@@ -26,9 +26,9 @@ module Oprah
     # presenter by default. This can be overridden.
     #
     # @see Presenter.present_many
-    def present_many(*args, **kwargs)
+    def present_many(*args, **kwargs, &block)
       kwargs = { view_context: oprah_view_context }.merge(kwargs)
-      Oprah.present_many(*args, **kwargs)
+      Oprah.present_many(*args, **kwargs, &block)
     end
 
     # The view context automatically passed to presented objects.

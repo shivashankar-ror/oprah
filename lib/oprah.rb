@@ -27,15 +27,15 @@ module Oprah
   # Presents a single object.
   #
   # @see Presenter.present_many
-  def present(*args, **kwargs)
-    Presenter.present(*args, **kwargs)
+  def present(*args, **kwargs, &block)
+    Presenter.present(*args, **kwargs, &block)
   end
 
   # Presents a collection of objects.
   #
   # @see Presenter.present_many
-  def present_many(*args, **kwargs)
-    Presenter.present_many(*args, **kwargs)
+  def present_many(*args, **kwargs, &block)
+    Presenter.present_many(*args, **kwargs, &block)
   end
 
   extend self

@@ -38,7 +38,7 @@ module Oprah
       assert_equal :ok, presenter.view_context
     end
 
-    def test_present
+    def test_present_many
       presenters = @controller.present_many([User.new, User.new])
 
       assert_equal 2, presenters.length
