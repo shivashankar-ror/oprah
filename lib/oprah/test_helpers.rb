@@ -1,4 +1,5 @@
 module Oprah
+  # @since 0.1.2
   module TestHelpers
     def present_many(*args, **kwargs)
       Oprah.present_many(*args, **kwargs)
