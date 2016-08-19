@@ -20,7 +20,7 @@ Opinionated presenters for Rails 5 - without the cruft.
   + [Ordering](#ordering)
   + [Choosing presenters](#choosing-presenters)
 * [License](#license)
-* [Author](#author)%
+* [Author](#author)
 
 ## Overview
 

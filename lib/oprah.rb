@@ -26,7 +26,7 @@ module Oprah
 
   # Presents a single object.
   #
-  # @see Presenter.present_many
+  # @see Presenter.present
   def present(*args, **kwargs, &block)
     Presenter.present(*args, **kwargs, &block)
   end
