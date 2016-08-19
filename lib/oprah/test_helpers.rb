@@ -8,14 +8,14 @@ module Oprah
     #
     # @see Presenter.present_many
     def present_many(*args, **kwargs, &block)
-      Oprah.present_many(*args, **kwargs, &block)
+      Presenter.present_many(*args, **kwargs, &block)
     end
 
     # Presents a single object.
     #
     # @see Presenter.present
     def present(*args, **kwargs, &block)
-      Oprah.present(*args, **kwargs, &block)
+      Presenter.present(*args, **kwargs, &block)
     end
   end
 end
