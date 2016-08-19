@@ -18,8 +18,9 @@ Opinionated presenters for Rails 5 - without the cruft.
 * [Composition](#composition)
   + [Performance](#performance)
   + [Ordering](#ordering)
+  + [Choosing presenters](#choosing-presenters)
 * [License](#license)
-* [Author](#author)
+* [Author](#author)%
 
 ## Overview
 
