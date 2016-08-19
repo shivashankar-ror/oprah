@@ -9,28 +9,22 @@ module Oprah
       helper_method :present_many
     end
 
-    # Presents the given `object` using {Presenter.present}.
+    # Shortcut to {Presenter.present}.
     #
     # Will pass the view context returned from {#oprah_view_context} to the
-    # presenter.
-    #
-    # @param object [Object] The object to present
-    # @param view_context [ActionView::Context] View context to assign
-    # @return [Presenter] Presented object
-    def present(object, view_context: oprah_view_context)
-      Oprah.present(object, view_context: view_context)
+    # presenter by default. This can be overridden.
+    def present(*args, **kwargs)
+      kwargs = { view_context: oprah_view_context }.merge(kwargs)
+      Oprah.present(*args, **kwargs)
     end
 
-    # Presents the given `objects` using {Presenter.present}.
+    # Shortcut to {Presenter.present_many}.
     #
     # Will pass the view context returned from {#oprah_view_context} to the
-    # presenter.
-    #
-    # @param objects [Enumerable] The objects to present
-    # @param view_context [ActionView::Context] View context to assign
-    # @return [Presenter] Presented object
-    def present_many(objects, view_context: oprah_view_context)
-      Oprah.present_many(objects, view_context: view_context)
+    # presenter by default. This can be overridden.
+    def present_many(*args, **kwargs)
+      kwargs = { view_context: oprah_view_context }.merge(kwargs)
+      Oprah.present_many(*args, **kwargs)
     end
 
     # The view context automatically passed to presented objects.

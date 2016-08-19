@@ -23,21 +23,13 @@ module Oprah
   end
 
   # Shortcut to {Oprah::Presenter#present}.
-  #
-  # @param object [Object] The object to present
-  # @param view_context [ActionView::Context] View context to assign
-  # @return [Presenter] Presented object
-  def present(object, view_context: Presenter.default_view_context)
-    Presenter.present(object, view_context: view_context)
+  def present(*args, **kwargs)
+    Presenter.present(*args, **kwargs)
   end
 
   # Shortcut to {Presenter#present_many}.
-  #
-  # @param objects [Enumerable] The objects to present
-  # @param view_context [ActionView::Context] View context to assign
-  # @return [Enumerable] Presented collection
-  def present_many(objects, view_context: Presenter.default_view_context)
-    Presenter.present_many(objects, view_context: view_context)
+  def present_many(*args, **kwargs)
+    Presenter.present_many(*args, **kwargs)
   end
 
   extend self
