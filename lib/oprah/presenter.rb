@@ -34,23 +34,24 @@ module Oprah
       #
       # @param object [Object] The object to present
       # @param view_context [ActionView::Context] View context to assign
+      # @param only [Class] Class or Array of presenters to use
       # @return [Presenter] Presented object
-      def present(object, view_context: default_view_context)
-        @@cache.lookup(object).inject(object) do |memo, presenter|
+      def present(object, view_context: default_view_context, only: nil)
+        presenters = @@cache.lookup(object)
+        presenters = presenters & (only.kind_of?(Array) ? only : [only]) if only
+
+        presenters.inject(object) do |memo, presenter|
           presenter.new(memo, view_context: view_context)
         end
       end
 
       # Presents the given `objects` with all their matching presenters.
-      # The individual behavior is the same as `.present`'s.
+      # The behaviour and parameters are identical to `.present`'s.
       #
       # @param objects [Enumerable] The objects to present
-      # @param view_context [ActionView::Context] View context to assign
-      # @return [Enumerable] Presented collection
-      def present_many(objects, view_context: default_view_context)
-        objects.map do |object|
-          present(object, view_context: view_context)
-        end
+      # @see .present
+      def present_many(objects, **kwargs)
+        objects.map { |object| present(object, **kwargs) }
       end
 
       # Automatically wrap the objects returned by the given one-to-one

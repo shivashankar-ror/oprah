@@ -1,3 +1,10 @@
+0.1.3
+-----
+
+- Presenters can now be specified using the `only:` keyword
+  argument, which takes either a Class or an Array of classes
+- Replace repeated method default arguments with splats
+
 0.1.2
 -----
 
