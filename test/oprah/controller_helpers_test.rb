@@ -38,20 +38,6 @@ module Oprah
       assert_equal :ok, presenter.view_context
     end
 
-    def test_present_only
-      presenter = @controller.present(User.new, only: UserPresenter)
-
-      assert_kind_of UserPresenter, presenter
-      refute_kind_of EntityPresenter, presenter
-
-      classes = [UserPresenter, EntityPresenter, CommentPresenter]
-      presenter = @controller.present(User.new, only: classes)
-
-      assert_kind_of UserPresenter, presenter
-      assert_kind_of EntityPresenter, presenter
-      refute_kind_of CommentPresenter, presenter
-    end
-
     def test_present_custom_view_context
       presenter = @controller.present(User.new, view_context: :foobar)
       assert_equal :foobar, presenter.view_context

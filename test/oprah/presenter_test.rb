@@ -10,6 +10,28 @@ module Oprah
       assert_equal UserPresenter.cache, Presenter.cache
     end
 
+    def test_present
+      assert_presented present(User.new)
+    end
+
+    def test_present_no_matching_presenter
+      refute_presented present([])
+    end
+
+    def test_present_only
+      presenter = present(User.new, only: UserPresenter)
+
+      assert_kind_of UserPresenter, presenter
+      refute_kind_of EntityPresenter, presenter
+
+      classes = [UserPresenter, EntityPresenter, CommentPresenter]
+      presenter = present(User.new, only: classes)
+
+      assert_kind_of UserPresenter, presenter
+      assert_kind_of EntityPresenter, presenter
+      refute_kind_of CommentPresenter, presenter
+    end
+
     def test_present_many
       present_many([User.new, User.new]).each do |presenter|
         assert_equal "Foo Bar", presenter.name
