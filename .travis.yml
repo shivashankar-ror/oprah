@@ -1,7 +1,7 @@
 language: ruby
 sudo: false
 cache: bundler
-script: rake test
+script: bundle exec rake test
 rvm:
   - 2.3.1
 matrix:

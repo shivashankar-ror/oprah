@@ -33,7 +33,7 @@ goals in mind only covered partially (or not at all) by other gems:
 
 - Lightweight
 - Presenters should be easy to test
-- No monkey patching :monkey::gun:
+- Avoid monkey patching, where possible :monkey::gun:
 - Embrace convention over configuration
 - First-class support for composition (modules and concerns)
 

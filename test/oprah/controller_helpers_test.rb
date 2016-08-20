@@ -35,7 +35,7 @@ module Oprah
       assert_kind_of UserPresenter, presenter
       assert_kind_of EntityPresenter, presenter
 
-      assert_equal :ok, presenter.view_context
+      assert_equal "ok", presenter.view_context.to_s
     end
 
     def test_present_custom_view_context
@@ -50,7 +50,7 @@ module Oprah
 
       presenters.each do |presenter|
         assert_equal "Foo Bar", presenter.name
-        assert_equal :ok, presenter.view_context
+        assert_equal "ok", presenter.view_context.to_s
       end
     end
 
