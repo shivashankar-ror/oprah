@@ -5,6 +5,7 @@ require 'singleton'
 # gems
 require 'active_support/concern'
 require 'active_support/inflector'
+require 'active_support/proxy_object'
 require 'action_controller'
 
 # internal
