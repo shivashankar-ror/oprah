@@ -49,6 +49,38 @@ module Oprah
       end
     end
 
+    def test_present_from_instance
+      view_context = Object.new
+      presenter = present(User.new, view_context: view_context)
+      presented = presenter.present(User.new)
+
+      assert_equal view_context.object_id, presented.view_context.object_id
+    end
+
+    def test_present_many_from_instance
+      view_context = Object.new
+      presenter = present(User.new, view_context: view_context)
+      presented = presenter.present_many([User.new]).first
+
+      assert_equal view_context.object_id, presented.view_context.object_id
+    end
+
+    def test_present_from_instance_custom_view_context
+      view_context = Object.new
+      presenter = present(User.new, view_context: view_context)
+      presented = presenter.present(User.new, view_context: :ok)
+
+      assert_equal :ok, presented.view_context
+    end
+
+    def test_present_many_from_instance_custom_view_context
+      view_context = Object.new
+      presenter = present(User.new, view_context: view_context)
+      presented = presenter.present_many([User.new], view_context: :ok).first
+
+      assert_equal :ok, presented.view_context
+    end
+
     def test_presents_one
       project = present(Project.new)
       owner = project.owner

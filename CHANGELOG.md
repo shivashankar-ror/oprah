@@ -7,6 +7,7 @@
 - Add assertions to TestHelper
 - Delegate to most recent view context in presenters created
   from within Rails controllers [#1]
+- Add #present and #present_many methods to Presenter
 
 0.1.2
 -----

@@ -57,24 +57,26 @@ module Oprah
       # Automatically wrap the objects returned by the given one-to-one
       # `association` method in presenters.
       #
+      # Presenters will re-use the parent's assigned view context.
+      #
       # @param association [Symbol] Name of the association
       # @return [Boolean]
       def presents_one(association)
         define_method association do
-          self.class.present(
-            object.__send__(association), view_context: view_context)
+          present(object.__send__(association), view_context: view_context)
         end
       end
 
       # Automatically wrap the objects returned by the given one-to-many
       # or many-to-many `association` method in presenters.
       #
+      # Presenters will re-use the parent's assigned view context.
+      #
       # @param association [Symbol] Name of the association
       # @return [Boolean]
       def presents_many(association)
         define_method association do
-          self.class.present_many(
-            object.__send__(association), view_context: view_context)
+          present_many(object.__send__(association), view_context: view_context)
         end
 
         true
@@ -105,6 +107,28 @@ module Oprah
       else
         super
       end
+    end
+
+    # Presents a single object.
+    #
+    # Will re-use the presenter's assigned view context if no `view_context`:
+    # parameter is given.
+    #
+    # @see .present
+    def present(*args, **kwargs, &block)
+      kwargs = { view_context: view_context }.merge(kwargs)
+      self.class.present(*args, **kwargs, &block)
+    end
+
+    # Presents a collection of objects.
+    #
+    # Will re-use the presenter's assigned view context if no `view_context`:
+    # parameter is given.
+    #
+    # @see .present_many
+    def present_many(*args, **kwargs, &block)
+      kwargs = { view_context: view_context }.merge(kwargs)
+      self.class.present_many(*args, **kwargs, &block)
     end
 
     # Returns true if either `object` or `self` responds to the given method
