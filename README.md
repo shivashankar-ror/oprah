@@ -19,6 +19,7 @@ Opinionated presenters for Rails 5 - without the cruft.
   + [Performance](#performance)
   + [Ordering](#ordering)
   + [Choosing presenters](#choosing-presenters)
+* [Testing](#testing)
 * [License](#license)
 * [Author](#author)
 
@@ -252,6 +253,29 @@ Oprah.present(User.new, only: DescribablePresenter)
 This parameter takes either a single presenter or an `Array` of presenters.
 The presenter(s) given need to match the object's class or one of it's
 ancestors. Non-matching presenters given will be ignored.
+
+## Testing
+
+Testing presenters is as simple as testing a regular class. Oprah also
+provides couple of helpers to make it even easier:
+
+``` ruby
+class UserPresenterTest < Minitest::Test
+  include Oprah::TestHelpers
+
+  def setup
+    @presenter = present User.new
+  end
+
+  def test_presented
+    assert_presented @presenter
+  end
+
+  def test_name
+    assert_equal "John Doe", @presenter.name
+  end
+end
+```
 
 ## License
 
