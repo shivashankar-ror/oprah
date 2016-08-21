@@ -20,6 +20,8 @@ Opinionated presenters for Rails 5 - without the cruft.
   + [Ordering](#ordering)
   + [Choosing presenters](#choosing-presenters)
 * [Testing](#testing)
+* [API Documentation](#api-documentation)
+* [Contributing](#contributing)
 * [License](#license)
 * [Author](#author)
 
@@ -276,6 +278,15 @@ class UserPresenterTest < Minitest::Test
   end
 end
 ```
+
+## API Documentation
+
+Comprehensive API Documentation is available at
+[rubydoc.info](http://www.rubydoc.info/gems/oprah).
+
+## Contributing
+
+Please check out our [contributing guidelines](CONTRIBUTING.md).
 
 ## License
 
