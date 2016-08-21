@@ -15,7 +15,11 @@ module Oprah
     end
 
     def test_present_no_matching_presenter
-      refute_presented present([])
+      object = Object.new
+      presented = present(object)
+
+      refute_presented presented
+      assert_equal presented, object
     end
 
     def test_present_only
