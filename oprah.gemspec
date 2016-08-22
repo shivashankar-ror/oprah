@@ -11,7 +11,7 @@ Gem::Specification.new do |gem|
   gem.summary       = "Opinionated presenters for Rails 5 - without the cruft"
   gem.description   = gem.summary
   gem.homepage      = "https://github.com/endofunky/oprah"
-  gem.license       = "Apache License, Version 2.0"
+  gem.license       = "MIT"
 
   gem.files         = `git ls-files -z`.split("\x0")
   gem.executables   = gem.files.grep(%r{^bin/}) { |f| File.basename(f) }
