@@ -95,12 +95,9 @@ module Oprah
       def presenter_classes_for(object)
         klass = object.class
 
-        @@cache.fetch klass do
+        @@cache.fetch klass.name do
           klass.ancestors.map do |klass|
-            begin
-              (klass.name + "Presenter").constantize
-            rescue NameError
-            end
+            (klass.name + "Presenter").safe_constantize
           end.compact.reverse
         end
       end
