@@ -24,7 +24,7 @@ module Oprah
     class << self
       # Returns the shared presenter cache object.
       #
-      # @return [Cache]
+      # @return [ActiveSupport::Cache::MemoryStore]
       def cache
         @@cache
       end
