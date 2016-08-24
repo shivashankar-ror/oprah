@@ -5,7 +5,7 @@ module Oprah
     include Fixtures
 
     def test_cache
-      assert_kind_of Oprah::Cache, Presenter.cache
+      assert_kind_of ActiveSupport::Cache::MemoryStore, Presenter.cache
       assert_equal Presenter.cache, Presenter.cache
       assert_equal UserPresenter.cache, Presenter.cache
     end

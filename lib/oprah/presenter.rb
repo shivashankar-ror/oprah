@@ -11,7 +11,7 @@ module Oprah
     alias :h :view_context
 
     # @!visibility private
-    @@cache = Oprah::Cache.new
+    @@cache = ActiveSupport::Cache::MemoryStore.new
 
     # @!method inspect
     #   @see Object#inspect
@@ -37,7 +37,7 @@ module Oprah
       # @param only [Class] Class or Array of presenters to use
       # @return [Presenter] Presented object
       def present(object, view_context: default_view_context, only: nil)
-        presenters = @@cache.lookup(object)
+        presenters = presenter_classes_for(object)
         presenters = presenters & (only.kind_of?(Array) ? only : [only]) if only
 
         presenters.inject(object) do |memo, presenter|
@@ -88,6 +88,21 @@ module Oprah
       # @return [ActionView::Context]
       def default_view_context
         ActionController::Base.new.view_context
+      end
+
+      private
+
+      def presenter_classes_for(object)
+        klass = object.class
+
+        @@cache.fetch klass do
+          klass.ancestors.map do |klass|
+            begin
+              (klass.name + "Presenter").constantize
+            rescue NameError
+            end
+          end.compact.reverse
+        end
       end
     end
 

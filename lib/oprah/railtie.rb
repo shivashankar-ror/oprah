@@ -4,7 +4,7 @@ module Oprah
   class Railtie < Rails::Railtie
     initializer "oprah.configure_cache_clear_on_code_reload" do
       ActiveSupport::Reloader.to_run do
-        Oprah::Presenter.cache.clear!
+        Oprah::Presenter.cache.clear
       end
     end
 

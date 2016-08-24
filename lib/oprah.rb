@@ -3,13 +3,13 @@ require 'forwardable'
 require 'singleton'
 
 # gems
+require 'active_support/cache'
 require 'active_support/concern'
 require 'active_support/inflector'
 require 'active_support/proxy_object'
 require 'action_controller'
 
 # internal
-require 'oprah/cache'
 require 'oprah/controller_helpers'
 require 'oprah/presenter'
 require 'oprah/version'
@@ -40,4 +40,11 @@ module Oprah
   end
 
   extend self
+end
+
+class Minitest::Test
+  def setup
+    super
+    Oprah::Presenter.cache.clear
+  end
 end
