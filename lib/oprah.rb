@@ -42,9 +42,3 @@ module Oprah
   extend self
 end
 
-class Minitest::Test
-  def setup
-    super
-    Oprah::Presenter.cache.clear
-  end
-end

@@ -5,6 +5,11 @@ require 'oprah/test_helpers'
 
 class Minitest::Test
   include Oprah::TestHelpers
+
+  def setup
+    super
+    Oprah::Presenter.cache.clear
+  end
 end
 
 module Fixtures
