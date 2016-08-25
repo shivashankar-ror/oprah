@@ -1,6 +1,6 @@
 module Oprah
-  # Helpers that will be mixed into `ActionController::Base` by
-  # the {Oprah::Railtie}.
+  # Helpers that will be mixed into `ActionController::Base` and
+  # `ActionMailer::Base` by the {Oprah::Railtie}.
   module ControllerHelpers
     # A proxy class to delegate method calls to view contexts in presenters
     # to the most recently created view context by
