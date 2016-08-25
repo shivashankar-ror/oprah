@@ -13,6 +13,7 @@ module Oprah
 
     def test_controller_helper_inclusion
       assert_includes ActionController::Base, ControllerHelpers
+      assert_includes ActionMailer::Base, ControllerHelpers
     end
   end
 end

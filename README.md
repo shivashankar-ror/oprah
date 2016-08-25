@@ -102,7 +102,7 @@ yourself:
 SomeOtherPresenter.new(User.new)
 ```
 
-### ActionController integration
+### ActionController/ActionMailer integration
 
 Now, where do we put our presenters? Ideally, you'd want to expose them in your
 controller. Oprah avoids monkey patching and generally it's good to be aware of
@@ -121,6 +121,19 @@ end
 This will also take care of passing the correct view context to the presenter,
 which you can access with the `#view_context` (or shorter, `#h`) instance
 method.
+
+The same will work in your mailers:
+
+``` ruby
+class UserMailer < ApplicationMailer
+  default from: 'notifications@example.com'
+
+  def welcome_email(user)
+    @user = present user
+    mail(to: @user.email, subject: 'Welcome to My Awesome Site')
+  end
+end
+```
 
 ## Collections
 

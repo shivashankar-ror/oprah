@@ -17,5 +17,11 @@ module Oprah
         ActionController::Base.include(Oprah::ControllerHelpers)
       end
     end
+
+    initializer "oprah.configure_action_mailer_helpers" do
+      ActiveSupport.on_load :action_mailer do
+        ActionMailer::Base.include(Oprah::ControllerHelpers)
+      end
+    end
   end
 end

@@ -1,3 +1,8 @@
+0.2.1
+-----
+
+- Support for ActionMailer
+
 0.2.0
 -----
 
