@@ -10,5 +10,9 @@ module Oprah
       Rails.application.reloader.reload!
       assert_nil Presenter.cache.fetch(User.name)
     end
+
+    def test_controller_helper_inclusion
+      assert_includes ActionController::Base, ControllerHelpers
+    end
   end
 end
