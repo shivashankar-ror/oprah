@@ -3,6 +3,7 @@ require 'minitest/pride'
 require 'oprah'
 require 'oprah/railtie'
 require 'oprah/test_helpers'
+require 'dummy/init'
 
 class Minitest::Test
   include Oprah::TestHelpers
