@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require 'oprah'
+require 'oprah/railtie'
 require 'oprah/test_helpers'
 
 class Minitest::Test
