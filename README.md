@@ -13,6 +13,7 @@ Opinionated presenters for Rails 5 - without the cruft.
 * [Installation](#installation)
 * [Getting started](#getting-started)
   + [ActionController integration](#actioncontroller-integration)
+  + [ActionMailer integration](#actionmailer-integration)
 * [Collections](#collections)
 * [Associations](#associations)
 * [Composition](#composition)
@@ -102,7 +103,7 @@ yourself:
 SomeOtherPresenter.new(User.new)
 ```
 
-### ActionController/ActionMailer integration
+### ActionController integration
 
 Now, where do we put our presenters? Ideally, you'd want to expose them in your
 controller. Oprah avoids monkey patching and generally it's good to be aware of
@@ -122,7 +123,10 @@ This will also take care of passing the correct view context to the presenter,
 which you can access with the `#view_context` (or shorter, `#h`) instance
 method.
 
-The same will work in your mailers:
+### ActionMailer integration
+
+Oprah will make the same helpers you have in ActionController available to
+ActionMailer:
 
 ``` ruby
 class UserMailer < ApplicationMailer
