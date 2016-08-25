@@ -1,4 +1,4 @@
-0.1.4
+0.2.0
 -----
 
 - Replace `Oprah::Cache` with `ActiveSupport::Cache::MemoryStore` [#3]

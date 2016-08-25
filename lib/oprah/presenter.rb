@@ -92,6 +92,7 @@ module Oprah
 
       private
 
+      # @since 0.2.0
       def presenter_classes_for(object)
         klass = object.class
 
