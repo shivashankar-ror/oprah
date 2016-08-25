@@ -5,6 +5,10 @@ module Oprah
     initializer "oprah.configure_cache_clear_on_code_reload" do
       ActiveSupport::Reloader.to_run do
         Oprah::Presenter.cache.clear
+
+        if Oprah.debug?
+          Rails.logger.debug "Oprah cache cleared"
+        end
       end
     end
 
