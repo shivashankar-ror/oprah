@@ -38,7 +38,7 @@ module Oprah
       # @return [Presenter] Presented object
       def present(object, view_context: default_view_context, only: nil)
         presenters = presenter_classes_for(object)
-        presenters = presenters & (only.kind_of?(Array) ? only : [only]) if only
+        presenters &= Array(only) if only
 
         presenters.inject(object) do |memo, presenter|
           presenter.new(memo, view_context: view_context)
