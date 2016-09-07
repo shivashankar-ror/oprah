@@ -35,7 +35,7 @@ locate, hard to test and not terribly expressive.
 So why another presenter/decorator library? Oprah was written with a few simple
 goals in mind only covered partially (or not at all) by other gems:
 
-- Lightweight
+- Thin, lightweight layer over Ruby's `SimpleDelegator`
 - Presenters should be easy to test
 - Avoid monkey patching, where possible :monkey::gun:
 - Embrace convention over configuration
