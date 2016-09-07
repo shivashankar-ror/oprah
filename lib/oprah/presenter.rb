@@ -50,7 +50,7 @@ module Oprah
       # @return [Boolean]
       def presents_one(association)
         define_method association do
-          present(__getobj__.__send__(association), view_context: view_context)
+          present(__getobj__.__send__(association))
         end
       end
 
@@ -63,7 +63,7 @@ module Oprah
       # @return [Boolean]
       def presents_many(association)
         define_method association do
-          present_many(__getobj__.__send__(association), view_context: view_context)
+          present_many(__getobj__.__send__(association))
         end
 
         true

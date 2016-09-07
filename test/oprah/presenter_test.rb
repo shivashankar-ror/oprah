@@ -50,6 +50,8 @@ module Oprah
       project.comments.each do |comment|
         assert_kind_of Comment, comment
         assert_kind_of CommentPresenter, comment
+        assert_equal project.view_context.object_id,
+                     comment.view_context.object_id
       end
     end
 
@@ -91,6 +93,8 @@ module Oprah
 
       assert_kind_of UserPresenter, owner
       assert_kind_of User, owner
+      assert_equal project.view_context.object_id,
+                   owner.view_context.object_id
     end
 
     def test_presenter_stack_ordering
