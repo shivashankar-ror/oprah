@@ -1,3 +1,9 @@
+0.3.0
+-----
+
+- Presenter now inherits from SimpleDelegator
+
+
 0.2.1
 -----
 
