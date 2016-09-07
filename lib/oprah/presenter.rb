@@ -122,9 +122,10 @@ module Oprah
       self.class.present_many(*args, **kwargs, &block)
     end
 
-    # Returns true if `klass` is the class of `object` or the presenter, or
-    # if `#class` is one of the superclasses of `object`, the presenter or
-    # modules included in `object` or the presenter.
+    # Returns true if `klass` is the class of the presented object or the
+    # presenter, or if `#class` is one of the superclasses of the presented
+    # object, the presenter or modules included in the presented object or the
+    # presenter.
     #
     # @param other [Module]
     # @return [Boolean] result
@@ -134,8 +135,8 @@ module Oprah
 
     alias :is_a? :kind_of?
 
-    # Returns `true` if `object` or the presenter is an instance of the given
-    # `class`.
+    # Returns `true` if the presented object or the presenter is an instance
+    # of the given `class`.
     #
     # @param klass [Class]
     # @return [Boolean] result
