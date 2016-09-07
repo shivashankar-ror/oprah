@@ -47,11 +47,13 @@ module Oprah
       # Presenters will re-use the parent's assigned view context.
       #
       # @param association [Symbol] Name of the association
-      # @return [Boolean]
+      # @return [Symbol] Name of the association
       def presents_one(association)
         define_method association do
           present(__getobj__.__send__(association))
         end
+
+        association
       end
 
       # Automatically wrap the objects returned by the given one-to-many
@@ -60,13 +62,13 @@ module Oprah
       # Presenters will re-use the parent's assigned view context.
       #
       # @param association [Symbol] Name of the association
-      # @return [Boolean]
+      # @return [Symbol] Name of the association
       def presents_many(association)
         define_method association do
           present_many(__getobj__.__send__(association))
         end
 
-        true
+        association
       end
 
       # Returns the default view context to use if no view context is explicitly
