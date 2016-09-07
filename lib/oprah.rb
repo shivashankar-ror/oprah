@@ -1,6 +1,5 @@
 # stdlib
-require 'forwardable'
-require 'singleton'
+require 'delegate'
 
 # gems
 require 'active_support/cache'

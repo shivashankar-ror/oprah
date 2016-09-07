@@ -1,10 +1,5 @@
 module Oprah
-  class Presenter
-    extend Forwardable
-
-    # @return [Object] The presented object
-    attr_reader :object
-
+  class Presenter < SimpleDelegator
     # @return [ActionView::Base] The view context
     attr_reader :view_context
 
@@ -12,14 +7,6 @@ module Oprah
 
     # @!visibility private
     @@cache = ActiveSupport::Cache::MemoryStore.new
-
-    # @!method inspect
-    #   @see Object#inspect
-    #   @return [String]
-    # @!method to_s
-    #   @see Object#to_s
-    #   @return [String]
-    def_delegators :@object, :inspect, :to_s
 
     class << self
       # Returns the shared presenter cache object.
@@ -63,7 +50,7 @@ module Oprah
       # @return [Boolean]
       def presents_one(association)
         define_method association do
-          present(object.__send__(association), view_context: view_context)
+          present(__getobj__.__send__(association), view_context: view_context)
         end
       end
 
@@ -76,7 +63,7 @@ module Oprah
       # @return [Boolean]
       def presents_many(association)
         define_method association do
-          present_many(object.__send__(association), view_context: view_context)
+          present_many(__getobj__.__send__(association), view_context: view_context)
         end
 
         true
@@ -109,17 +96,8 @@ module Oprah
     # @param object [Object] The object to present
     # @param view_context [ActionView::Context] View context to assign
     def initialize(object, view_context: self.class.default_view_context)
-      @object = object
+      __setobj__(object)
       @view_context = view_context
-    end
-
-    # Delegates all method calls not handled by the presenter to `object`.
-    def method_missing(meth, *args, &block)
-      if respond_to?(meth)
-        object.__send__(meth, *args, &block)
-      else
-        super
-      end
     end
 
     # Presents a single object.
@@ -144,16 +122,6 @@ module Oprah
       self.class.present_many(*args, **kwargs, &block)
     end
 
-    # Returns true if either `object` or `self` responds to the given method
-    # name.
-    #
-    # @param method [Symbol] Name of the method
-    # @param include_private [Boolean] Whether to include private methods
-    # @return [Boolean] result
-    def respond_to?(method, include_private = false)
-      super || object.respond_to?(method, include_private)
-    end
-
     # Returns true if `klass` is the class of `object` or the presenter, or
     # if `#class` is one of the superclasses of `object`, the presenter or
     # modules included in `object` or the presenter.
@@ -161,7 +129,7 @@ module Oprah
     # @param other [Module]
     # @return [Boolean] result
     def kind_of?(other)
-      super || object.kind_of?(other)
+      super || __getobj__.kind_of?(other)
     end
 
     alias :is_a? :kind_of?
@@ -172,15 +140,7 @@ module Oprah
     # @param klass [Class]
     # @return [Boolean] result
     def instance_of?(klass)
-      super || object.instance_of?(klass)
-    end
-
-    # Returns `true` if `object` or the presenter tests positive for equality.
-    #
-    # @param other [Object]
-    # @return [Boolean] result
-    def ==(other)
-      super || object == other
+      super || __getobj__.instance_of?(klass)
     end
   end
 end
