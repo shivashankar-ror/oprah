@@ -72,4 +72,13 @@ module Fixtures
     presents_many :comments
     presents_one :owner
   end
+
+  # EigenUser contains eigen class in ancestors list.
+  #
+  # > EigenUser.ancestors
+  # => [Fixtures::EigenUser, #<Module:0x007faa79b128f0>, Object, ... , Kernel, BasicObject]
+  #
+  class EigenUser
+    include Module.new
+  end
 end

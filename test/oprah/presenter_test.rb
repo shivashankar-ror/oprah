@@ -14,6 +14,10 @@ module Oprah
       assert_presented present(User.new)
     end
 
+    def test_present_with_eigenclass
+      assert_equal false, present(EigenUser.new).nil?
+    end
+
     def test_present_no_matching_presenter
       object = Object.new
       presented = present(object)
