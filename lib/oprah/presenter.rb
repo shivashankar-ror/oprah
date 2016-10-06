@@ -87,7 +87,7 @@ module Oprah
 
         @@cache.fetch klass.name do
           klass.ancestors.map do |ancestor|
-            (ancestor.name + "Presenter").safe_constantize
+            (ancestor.name + "Presenter").safe_constantize if ancestor.name
           end.compact.reverse
         end
       end
