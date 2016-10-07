@@ -2,6 +2,7 @@
 -----
 
 - Presenter now inherits from SimpleDelegator
+- Support for anonymous ancestors [#9]
 
 
 0.2.1
